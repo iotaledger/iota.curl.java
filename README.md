@@ -19,7 +19,7 @@ To test:
 
 	mvn test
 
-IOTA: www.iotatokens.com
+IOTA: www.iotatoken.com
 
 	
 	
