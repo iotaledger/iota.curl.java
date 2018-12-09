@@ -32,10 +32,16 @@ public class IotaCurlHash {
 
     private final CurlState curlState = new CurlState();
 
-    public static String iotaCurlHash(final String tx, final int len) {
-        final IotaCurlHash ctx = new IotaCurlHash();
+    private final int rounds;
+
+    public static String iotaCurlHash(final String tx, final int len, int rounds) {
+        final IotaCurlHash ctx = new IotaCurlHash(rounds);
         ctx.doAbsorb(tx.toCharArray(), len);
         return ctx.doFinalize();
+    }
+
+    protected IotaCurlHash(int rounds) {
+        this.rounds = rounds;
     }
 
     /**
@@ -51,7 +57,7 @@ public class IotaCurlHash {
     protected void doHashTransform(int [] state1) {
         int [] state2 = Arrays.copyOf(state1, state1.length);
 
-        for(int r=0; r<27; r++) {
+        for(int r=0; r<rounds; r++) {
             state1[0] = IotaCurlUtils.TRUTH_TABLE[state2[0] + (state2[364] << 2) + 5];
 
             // state1[0] = IotaCurlUtils.invokeBinaryTruthOn(state2[0], state2[364]);

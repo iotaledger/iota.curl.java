@@ -17,7 +17,7 @@ public class HashTest {
 
     @Test
     public void shouldHash() {
-        final String hashed = IotaCurlHash.iotaCurlHash(tx, 2673);
+        final String hashed = IotaCurlHash.iotaCurlHash(tx, 2673, 27);
         System.err.println(hashed);
         System.err.println(hash);
         Assert.assertEquals(hash, hashed);
@@ -25,7 +25,7 @@ public class HashTest {
 
     @Test
     public void shouldDoHashTransform() {
-        IotaCurlHash hash = new IotaCurlHash();
+        IotaCurlHash hash = new IotaCurlHash(27);
         int [] state = IntStream.generate(() -> 0).limit(1000).toArray();
         System.err.println(Arrays.toString(state));
         hash.doHashTransform(state);
