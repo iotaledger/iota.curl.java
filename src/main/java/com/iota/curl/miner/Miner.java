@@ -63,7 +63,7 @@ public class Miner {
         stdout("txTrytes: %s", tx);
 
         // Print hash.
-        final String hash = IotaCurlHash.iotaCurlHash(tx, TX_LENGTH);
+        final String hash = IotaCurlHash.iotaCurlHash(tx, TX_LENGTH, 27);
         stdout("hash: %s", hash);
     }
 

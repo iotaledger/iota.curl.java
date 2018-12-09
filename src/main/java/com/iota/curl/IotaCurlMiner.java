@@ -121,7 +121,7 @@ public class IotaCurlMiner {
 
     private final char[] powInit(final String tx) {
 
-        final IotaCurlHash ctx = new IotaCurlHash();
+        final IotaCurlHash ctx = new IotaCurlHash(27);
         final char[] trx = tx.toCharArray();
         ctx.doAbsorb(trx, TX_HEADER_SZ);
 
